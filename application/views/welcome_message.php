@@ -12,7 +12,6 @@ function myFunction(evt) {
 	{
 		alert("Giri Putra Adhittana");
 		console.log("Hello World");
-		fefefefe
 	}
 }
 </script>
