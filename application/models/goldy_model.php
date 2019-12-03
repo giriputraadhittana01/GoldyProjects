@@ -36,4 +36,19 @@ class goldy_model extends CI_Model{
         }
     }
 
+    public function getUser($data){
+        $this->db->from('user');
+        $this->db->where('email', $data['email']);
+        $this->db->where('pass', $data['pass']);
+        $result = $this->db->get();
+
+        $result = $result->result();
+
+        if($result){
+            return $result;
+        }else{
+            return FALSE;
+        }
+    }
+
 }

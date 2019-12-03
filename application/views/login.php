@@ -9,10 +9,10 @@
 </head>
 <body class="container p-4">
     <form action="login/signin" method="post" id="body_data">
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="username">Username</label>
             <input class="form-control" type="text" name="username">
-        </div>
+        </div> -->
         <div class="form-group">
             <label for="email">Email</label>
             <input class="form-control" type="email" name="email">
