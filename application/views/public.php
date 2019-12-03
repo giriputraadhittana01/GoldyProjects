@@ -17,8 +17,17 @@
             <option value="2">Sedang</option>
             <option value="3">Besar</option>
         </select>
+        <div class="input-group">
+            <input type="radio" name="gender" value="1">Male
+            <input type="radio" name="gender" value="2">Female
+        </div>
         <button class="btn btn-primary" id="generate" type="button">Get Body Status!</button>
     </form>
+    <div class="card">
+        <div class="card-body" id="result">
+
+        </div>
+    </div>
 
     <script src="<?=base_url();?>assets/js/jquery.js"></script>
     <script src="<?=base_url();?>assets/js/popper.js"></script>
@@ -33,7 +42,12 @@
                     data : $('#body_data').serialize(),
                     type: "POST",
                     success: function(data){
+                        // var datax = data.Parses
+                        console.log("This the data");
                         console.log(data);
+                        
+                        $('#result').empty();
+                        $('#result').append(data);
                     }
                 });
             });
