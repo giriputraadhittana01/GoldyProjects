@@ -5,6 +5,7 @@ header('Access-Control-Allow-Origin: *');
 class Guest extends CI_Controller{
             
     public function index(){
+        $this->load->view('header');
         $this->load->view('public');
     }
 
