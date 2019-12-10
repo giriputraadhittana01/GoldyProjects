@@ -49,6 +49,8 @@ body {
     <link rel="stylesheet" href="<?=base_url();?>/assets/css/font-awesome/css/free-v4-font-face.min.css" media="all">
 	<link rel="stylesheet" href="<?=base_url();?>/assets/css/font-awesome/css/free-v4-shims.min.css" media="all">
     
+    <link rel="stylesheet" href="<?=base_url();?>assets/css/bootstrap.css">
+    <link rel="stylesheet" href="<?=base_url();?>assets/css/animate.css">
     <script src="<?=base_url();?>assets/js/jquery.js"></script>
     <script src="<?=base_url();?>assets/js/popper.js"></script>
     <script src="<?=base_url();?>assets/js/bootstrap.js"></script>
@@ -60,7 +62,7 @@ body {
 </head>
 <body>
   <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-4">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
     <a class="navbar-brand" href="#">LOGO</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,3 +86,5 @@ body {
     </div>
   </div>
 </nav>
+   
+                                               
