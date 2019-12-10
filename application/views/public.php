@@ -11,21 +11,46 @@
   -o-background-size: cover;
   background-size: cover;
 }
+#content {
+  width: 50%;
+  float: left;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#result{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.result-content {
+  width: 48%;
+  float: right;
+  padding: 10px;
+}
+.input-group.mb-3 {
+  width: 50%;
+}
+body {
+  margin-bottom: 50px;
+  height: 1000px;
+  width : 100%; 
+}
 
 </style>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?=base_url();?>assets/css/bootstrap.css">
+    <link rel="stylesheet" href="<?=base_url();?>assets/css/animate.css">
     <script src="<?=base_url();?>assets/js/jquery.js"></script>
     <script src="<?=base_url();?>assets/js/popper.js"></script>
     <script src="<?=base_url();?>assets/js/bootstrap.js"></script>
-    
-    <title>Document</title>
+    <script src="<?=base_url();?>assets/js/jquery.mask.js"></script>
+    <script src="<?=base_url();?>assets/js/sweetalert.js"></script>
+    <script src="<?=base_url();?>assets/script/functionGlobal.js"></script>
+    <title>Documents</title>
 </head>
 <body>
   <!-- Navigation -->
@@ -34,7 +59,7 @@
     <a class="navbar-brand" href="#">LOGO</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-        </button>
+    </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -98,31 +123,163 @@
 <!-- Page Content -->
 <section class="py-5">
   <div class="container">
-    <h1 class="display-4">Get Your Body Size Now</h1>
-    <form>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <h1 class="display-3" style="background:#f8f9fa !important;padding: 20px;border-radius: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}"><b>LET'S CHECK YOUR BODY NOW !</b></h1>
+    <div id='content' style="background:#f8f9fa !important;padding: 20px;border-radius: 20px;">
+      <div id='form-content'>
+          <div class="flex" style="display:flex;margin-bottom: 1rem;">
+            <div class="flex-content" style="width:100px;margin-right:0px;">
+              <label for="exampleInputEmail1"><b>Weight</b></label>
+              <input type="text" class="form-control mask-body" name="weight" id="weight"  placeholder="KG" style='width:55%' onkeyup='checkWeight($(this),event)'>
+            </div>
+            <div class="flex-content" style="width:100px;">
+              <label for="exampleInputPassword1"><b>Height</b></label>
+              <input type="text" class="form-control mask-body" name="height"id="height" placeholder="CM"style='width:55%' onkeyup='checkHeight($(this),event)'>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="gender3"><b>Gender</b></label>
+              </div>
+              <select class="custom-select" name='gender' id="gender" style='width:50%' onchange="checkGender($(this))">
+                <option value="">Choose...</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" style='display:block;'><b>Body Type</b></label>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" name="body_type" value='1' style='margin-right:5px;'>Small
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">  
+                <input type="radio" name="body_type" value='2' style='margin-right:5px;'>Medium
+              </label>
+            </div>
+            <div class="form-check-inline disabled">
+              <label class="form-check-label">
+                <input type="radio" name="body_type" value='3' style='margin-right:5px;'>Large
+              </label>
+            </div> 
+          </div>
+          <button type="submit" onclick='getSize()'class="btn btn-primary">Go</button>
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-      </div>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+    </div>
+    <div id='result' class='result-content'style="background:#f8f9fa !important;padding: 20px;border-radius: 20px;margin-bottom:10px;">
+      <iframe width="100%" height="200" src="assets/video/vid.mp4">
+      </iframe>
+    </div>
+    <div class='result-content'style="background:#f8f9fa !important;padding: 20px;border-radius: 20px;">
+      <div class="card" style="width: 30.5rem;">
+          <div class="card-body">
+            <p class="card-text">
+              sYour body is an amazing thing and will work well for you depending on how you treat it,<br>
+              your body requires effort and focus on your part to maintain optimum health so that you can perform to your absolute best as much as possible.<br>
+              Very often injuries and illnesses manifest themselves through a lack of care for your body; here are 7 steps to focus on to help you keep your body healthy and working to the very best for you!
+            </p>
+          </div>
+      </div>    
+    </div>
   </div>
 </section>
-
 </body>
 </html>
+<script type='text/javascript'> 
+$(".mask-body").mask("000");
 
-<script type='text/javascript'>
-    $(document).ready(function(){
-        
-    });
+$(document).ready(function(){   
+
+});
+
+function getSize()
+{
+  if(!checkWeight($("#weight"),13)||!checkHeight($("#height"),13)||!checkGender($("#gender")))
+  {
+    return false;
+  }
+  else if($("[name=body_type]:checked").val()==null)
+  {
+    customAlert('error','Oops...','Body Type is Empty');
+    return false;
+  }
+  $.ajax({
+	  type : "POST",
+    url : "<?=base_url();?>Guest/get",
+    dataType : "json",
+    data : {
+        weight    : $("#weight").val(),
+        height    : $("#height").val(),
+        gender    : $("#gender").val(),
+        body_type : $("[name=body_type]:checked").val()
+    },
+    success : function(response){
+      $(".card-text").html(response);  
+    }
+	});
+}
+
+function checkWeight(elem,evt)
+{
+  if(evt.which==13||evt==13)
+  {
+    if(elem.val()=="")
+    {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Weight is Empty'
+      })
+      return false;
+    }
+    else 
+    {
+      $("#height").focus();
+      return true;
+    }
+  }
+}
+function checkHeight(elem,evt)
+{
+  if(evt.which==13||evt==13)
+  {
+    if(elem.val()=="")
+    {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Height is Empty'
+      })
+      return false;
+    }
+    else 
+    {
+      $("#gender").focus().select();
+      return true;
+    }
+  }
+}
+function checkGender(elem)
+{
+  if(elem.val()=="")
+  {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Gender is Empty'
+    })
+    return false;
+  }
+  else
+  {
+    return true;
+  }
+  
+}
 </script>
+             
+                                               
