@@ -1,4 +1,3 @@
-
 function customAlert(icn,ttl,txt)
 {
     Swal.fire({
