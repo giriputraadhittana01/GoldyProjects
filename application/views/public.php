@@ -328,7 +328,10 @@ function sendMessage()
     icon: 'success',
     title: 'Signed in successfully'
   })
-
+  $("#name").val("");
+  $("#email").val("");
+  $("#message").val("");  
+  
 }
 </script>
              

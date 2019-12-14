@@ -1,8 +1,15 @@
-	
+    <?php 
+    if($this->session->flashdata('msg')!=null){
+    ?>
+    <?php 
+        if($this->session->flashdata('msg')=="1") c
+    ?>
+       <script type='text/javascript'>customAlert('success','Success',"Account Created Successfully");</script>
+    <?php}?>
 <div class="limiter">
 	<div class="container-login100">
 		<div class="wrap-login100" style="margin:100px;">
-			<form class="login100-form validate-form" method="POST" action="<?=site_url("Guest/index");?>">
+			<form class="login100-form validate-form" method="POST" action="<?=site_url("Login/signin");?>">
 				<span class="login100-form-title p-b-26">
 					LOGIN 
 				</span>

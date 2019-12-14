@@ -26,6 +26,8 @@ class Login extends CI_Controller {
 
             $this->session->set_userdata($userdata);
         }else{
+            $msg=1;
+            $this->session->set_flashdata('msg',$msg);
             redirect('login');
         }
 
