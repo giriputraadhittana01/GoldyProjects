@@ -2,7 +2,7 @@
 <div class="limiter">
 	<div class="container-login100">
 		<div class="wrap-login100" style="margin:100px;">
-			<form class="login100-form validate-form" method="POST" action="<?=site_url("Guest/index");?>">
+			<form id="login_form" class="login100-form validate-form" method="POST" action="<?=site_url("Guest/index");?>">
 				<span class="login100-form-title p-b-26">
 					LOGIN 
 				</span>
@@ -23,7 +23,7 @@
 				<div class="container-login100-form-btn">
 					<div class="wrap-login100-form-btn">
 						<div class="login100-form-bgbtn"></div>
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="button" id="btn-login">
 						    Login
 						</button>
 					</div>
@@ -50,6 +50,27 @@
 $(document).ready(function(){   
     console.log("xixix");
 });
+
+$('#btn-login').on('click', function(){
+    checkLogin();
+});
+
+function checkLogin(){
+    $.ajax({
+        url: '<?= base_url()?>/Login/login_check',
+        data: $('#login_form').serialize(),
+        type: 'POST',
+        success: function(data){
+            if(data){
+                customAlert('success','Success','Wellcome!');
+                window.location.href = "<?= base_url()?>/Home";
+            }else{
+                customAlert('error','Oops...','Wrong Email or Password!');
+            }
+        }
+    });
+}
+
 
 /*==================================================================
 [ Template ]*/

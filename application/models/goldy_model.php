@@ -45,7 +45,7 @@ class goldy_model extends CI_Model{
         $result = $result->result();
 
         if($result){
-            return $result;
+            return TRUE;
         }else{
             return FALSE;
         }
