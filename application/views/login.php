@@ -14,7 +14,7 @@
 					LOGIN 
 				</span>
 				<span class="login100-form-title p-b-48">
-					<i class="zmdi zmdi-font"></i>
+                    <img src="<?=base_url();?>/img/logo.png" alt="" width="80px">
 				</span>
 				<div class="wrap-input100 validate-input" data-validate = "Invalid Email">
 					<input class="input100" type="text" name="email">
