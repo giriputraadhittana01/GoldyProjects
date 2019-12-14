@@ -1,3 +1,18 @@
+<style>
+.contact-form{ margin-top:15px;}
+.contact-form .textarea{ min-height:220px; resize:none;}
+.form-control{ box-shadow:none; border-color:#eee; height:49px;}
+.form-control:focus{ box-shadow:none; border-color:#00b09c;}
+.form-control-feedback{ line-height:50px;}
+.main-btn{ background:#00b09c; border-color:#00b09c; color:#fff;}
+.main-btn:hover{ background:#00a491;color:#fff;}
+.form-control-feedback {
+line-height: 50px;
+top: 0px;
+}
+</style>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
 <header>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -42,8 +57,7 @@
 <!-- Page Content -->
 <section class="py-5">
   <div class="container">
-    <h1 class="display-3" style="background:#f8f9fa !important;padding: 20px;border-radius: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}"><b>LET'S CHECK YOUR BODY NOW !</b></h1>
+    <h1 class="display-3"><b>LET'S CHECK YOUR BODY NOW !</b></h1>
     <div id='content' style="background:#f8f9fa !important;padding: 20px;border-radius: 20px;">
       <div id='form-content'>
           <div class="flex" style="display:flex;margin-bottom: 1rem;">
@@ -90,18 +104,63 @@
       </div>
     </div>
     <div id='result' class='result-content'style="background:#f8f9fa !important;padding: 20px;border-radius: 20px;margin-bottom:10px;">
-      <iframe width="100%" height="200" src="assets/video/vid.mp4">
+      <iframe width="100%" height="200" src="assets/video/vid.mp45">
       </iframe>
     </div>
     <div class='result-content'style="background:#f8f9fa !important;padding: 20px;border-radius: 20px;">
-      <div class="card" style="width: 30.5rem;">
+      <div class="card"  style="width: 30.5rem;">
           <div class="card-body">
             <p class="card-text">
-              sYour body is an amazing thing and will work well for you depending on how you treat it,<br>
-              your body requires effort and focus on your part to maintain optimum health so that you can perform to your absolute best as much as possible.<br>
-              Very often injuries and illnesses manifest themselves through a lack of care for your body; here are 7 steps to focus on to help you keep your body healthy and working to the very best for you!
+              <div class="container">
+                <div class="row">
+                  <div id='display-4' style="width:100%;text-align:center;"><b><i>COMMENT</i></b></div>
+                  <div role="form" id="contact-form" class="contact-form">
+                      <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                              <input type="text" class="form-control" name="name" autocomplete="off" id="name" placeholder="Name" onkeyup='checkName($(this),event)'>
+                        </div>
+                      </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                              <input type="email" class="form-control" name="email" autocomplete="off" id="email" placeholder="E-mail" onkeyup='checkEmail($(this),event)'>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                        <div class="form-group">
+                              <textarea class="form-control textarea" rows="3" name="message" id="message" placeholder="Message"></textarea>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary pull-right" onclick="sendMessage()">Send a message</button>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </p>
           </div>
+      </div>    
+    </div>
+    <div class='result-content'style="background:#f8f9fa !important;padding: 20px;border-radius: 20px;margin-right: 20px;margin-top: 15px;width:50%;">
+      <div class="card" style="width: 32rem;">
+        <div class="card text-white">
+          <div class="card-header bg-info">
+            <h4>Get Your Food Recommendation Now !!!<h4>
+          </div>
+
+          <div class="card-body bg-warning">
+            You will have a food recommendation
+          </div>
+
+          <div class="card-footer bg-info">
+          <button type="submit" onclick=''class="btn btn-primary">Start Now</button>
+          </div>
+        </div>
       </div>    
     </div>
   </div>
@@ -112,7 +171,7 @@
 $(".mask-body").mask("000");
 
 $(document).ready(function(){   
-
+  console.log("Gorylla Lam");
 });
 
 function getSize()
@@ -137,22 +196,32 @@ function getSize()
         body_type : $("[name=body_type]:checked").val()
     },
     success : function(response){
-      $(".card-text").html(response);  
+      showType(response);
     }
 	});
 }
-
+function showType(datacall)
+{
+  if(datacall==1)
+  {
+    customModal('THIN','Dont Forget To Eat !!!','http://irigoyendesign.com/images/portfolio/monsters-proj/Monster2-Dancing_v2.gif');
+  }
+  else if(datacall==2)
+  {
+    customModal('IDEAL','You Look Cool !!!','https://media.giphy.com/media/3j0XszWA7pQkmsjhgy/giphy.gif');
+  }
+  else if(datacall==3)
+  {
+    customModal('OVERWEIGHT','You Mush Have A Diet !!!','https://media0.giphy.com/media/5QTNv6tPC2QnYSU7c6/source.gif');
+  }
+}
 function checkWeight(elem,evt)
 {
   if(evt.which==13||evt==13)
   {
     if(elem.val()=="")
     {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Weight is Empty'
-      })
+      customAlert('error','Oops...','Weight is Empty');
       return false;
     }
     else 
@@ -168,11 +237,7 @@ function checkHeight(elem,evt)
   {
     if(elem.val()=="")
     {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Height is Empty'
-      })
+      customAlert('error','Oops...','Height is Empty');
       return false;
     }
     else 
@@ -186,18 +251,84 @@ function checkGender(elem)
 {
   if(elem.val()=="")
   {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Gender is Empty'
-    })
+    customAlert('error','Oops...','Gender is Empty');
     return false;
   }
   else
   {
     return true;
   }
-  
+}
+function checkName(elem,evt)
+{
+  if(evt.which==13||evt==13)
+  {
+    if(elem.val()=="")
+    {
+      customAlert('error','Oops...','Name is Empty');
+      return false;
+    }
+    else 
+    {
+      $("#email").focus();
+      return true;
+    }
+  }
+}
+function checkEmail(elem,evt)
+{
+  if(evt.which==13||evt==13)
+  {
+    if(elem.val()=="")
+    {
+      customAlert('error','Oops...','Email is Empty');
+      return false;
+    }
+    else if(!validateEmail($("#email").val()))
+    { 
+      customAlert('error','Oops...','Email is Invalid');
+      return false;
+    }
+    else 
+    {
+      $("#message").focus();
+      return true;
+    }
+  }
+}
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+function sendMessage()
+{
+  if(!checkName($("#name"),13)||!checkEmail($('#email'),13))
+  {
+    return false;
+  }
+  else if($("#message").val()=="")
+  {
+    customAlert('error','Oops...','Message is Empty');
+    return false;
+  }
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 1500,
+    timerProgressBar: true,
+    onOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
+  Toast.fire({
+    icon: 'success',
+    title: 'Signed in successfully'
+  })
+
 }
 </script>
              
