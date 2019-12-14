@@ -6,7 +6,7 @@
                     <h2>Profile</h2>
                 </div>
                 <div class="card-body">
-                    <div class="rounded-circle" style="margin: 10px auto ;background: url(<?= base_url('img/profile_pic/cat.jpg') ?>) 50% 50% no-repeat;width: 250px;height: 250px; background-size: cover; "></div>
+                    <div class="rounded-circle" style="margin: 10px auto ;background: url(<?= base_url('img/profile_pic/cat.jpg') ?>) 50% 50% no-repeat;width: 200px;height: 200px; background-size: cover; "></div>
                     <!-- <img src="<?= base_url('img/profile_pic/cat.jpg') ?>" alt="" width="300px" class="rounded-circle "> -->
                     <div class="float-left" style="text-align: left">
                         <i class="fas fa-user ml-4"></i><span>&nbsp;&nbsp;Ahmad</span> <br>
