@@ -1,20 +1,17 @@
-    <?php 
-    if($this->session->flashdata('msg')!=null){
-    ?>
-    <?php 
-        if($this->session->flashdata('msg')=="1") c
+<?php 
+    if($this->session->flashdata('msg')!=null&& $this->session->flashdata('msg')=="1"){
     ?>
        <script type='text/javascript'>customAlert('success','Success',"Account Created Successfully");</script>
-    <?php}?>
+    <?php } ?>
 <div class="limiter">
 	<div class="container-login100">
 		<div class="wrap-login100" style="margin:100px;">
-			<form class="login100-form validate-form" method="POST" action="<?=site_url("Login/signin");?>">
+			<!-- <form class="login100-form validate-form" method="POST" action="<?=site_url("Login/signin");?>"> -->
 				<span class="login100-form-title p-b-26">
 					LOGIN 
 				</span>
 				<span class="login100-form-title p-b-48">
-                    <img src="<?=base_url();?>/img/logo.png" alt="" width="80px">
+					<img src="<?=base_url();?>/img/logo.png" alt="" width="80px">
 				</span>
 				<div class="wrap-input100 validate-input" data-validate = "Invalid Email">
 					<input class="input100" type="text" name="email">
@@ -30,7 +27,7 @@
 				<div class="container-login100-form-btn">
 					<div class="wrap-login100-form-btn">
 						<div class="login100-form-bgbtn"></div>
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" onclick="signin()">
 						    Login
 						</button>
 					</div>
@@ -43,7 +40,7 @@
 						Sign Up
 					</a>
 				</div>
-			</form>
+			<!-- </form> -->
 		</div>
 	</div>
 </div>
@@ -55,7 +52,7 @@
 <script type='text/javascript'>
 
 $(document).ready(function(){   
-    console.log("xixix");
+    console.log("bobas");
 });
 
 /*==================================================================
@@ -123,4 +120,23 @@ $('.btn-show-pass').on('click', function(){
 });
 /*==================================================================*/
 
+function signin()
+{
+    $.ajax({
+	  type : "POST",
+        url : "<?=base_url();?>Login/signin",
+        dataType : "json",
+        data : {
+            email   : $("[name=email]").val(),
+            pass    : $("[name=pass]").val()
+        },
+        success : function(response){
+            if(response==1)
+            {
+                customAlert('error','Oops...','Email Or Password Incorrect');
+                return false;
+            }
+        }
+	});
+}
 </script>

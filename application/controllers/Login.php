@@ -16,21 +16,19 @@ class Login extends CI_Controller {
         $result = $this->goldy_model->getUser($user);
         $result = json_decode(json_encode($result), true);
         $result = $result[0];
-
+        $resp="";
         if($result){
             $userdata = array(
                 'logged' => true,
                 'username' => $result['username'],
                 'email' => $result['email'],
             );
-
+            $resp=0;
             $this->session->set_userdata($userdata);
         }else{
-            $msg=1;
-            $this->session->set_flashdata('msg',$msg);
-            redirect('login');
+            $resp=1;
         }
-
+        echo json_encode($resp);
     }
     
 
