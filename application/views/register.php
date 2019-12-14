@@ -3,7 +3,7 @@
 <div class="limiter">
 	<div class="container-login100">
 		<div class="wrap-login100" style="margin:100px;">
-			<form class="login100-form validate-form" method="POST" action="<?=site_url("Guest/index");?>">
+			<form class="login100-form validate-form" method="POST" action="<?=site_url("Register/register_user");?>">
 				<span class="login100-form-title p-b-26">
 					REGISTER
 				</span>
@@ -38,7 +38,7 @@
 				<div class="container-login100-form-btn">
 					<div class="wrap-login100-form-btn">
 						<div class="login100-form-bgbtn"></div>
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit">
 							Registers
 						</button>
 					</div>
