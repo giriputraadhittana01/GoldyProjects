@@ -30,6 +30,18 @@ class Login extends CI_Controller {
         }
         echo json_encode($resp);
     }
+
+    public function login_check(){
+        $user = $this->input->post();
+
+        $result = $this->goldy_model->getUser($user);
+
+        if($result){
+            echo TRUE;
+        }else{
+            echo FALSE;
+        }
+    }
     
 
 }
