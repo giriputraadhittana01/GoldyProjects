@@ -18,10 +18,12 @@ class Register extends CI_Controller{
             'pass' => $input['password'],
             'gender' => $input['gender']
         );
-
+       
         $result = $this->goldy_model->insert_data('user', $data);
 
         if($result > 0){
+            $msg = "1";
+            $this->session->set_flashdata('msg',$msg);
             redirect('Login');
             // echo 'Berhasil';
         }else{

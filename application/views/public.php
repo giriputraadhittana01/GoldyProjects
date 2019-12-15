@@ -224,6 +224,16 @@ function checkWeight(elem,evt)
       customAlert('error','Oops...','Weight is Empty');
       return false;
     }
+    else if(elem.val()<54)
+    {
+      customAlert('error','Oops...','Weight is Too Low');
+      return false;
+    }
+    else if(elem.val()>86)
+    {
+      customAlert('error','Oops...','Weight is Too High');
+      return false;
+    }
     else 
     {
       $("#height").focus();
@@ -238,6 +248,16 @@ function checkHeight(elem,evt)
     if(elem.val()=="")
     {
       customAlert('error','Oops...','Height is Empty');
+      return false;
+    }
+    else if(elem.val()<157)
+    {
+      customAlert('error','Oops...','Height is Too Low');
+      return false;
+    }
+    else if(elem.val()>195)
+    {
+      customAlert('error','Oops...','Height is Too High');
       return false;
     }
     else 
