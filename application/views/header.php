@@ -57,6 +57,10 @@ body {
     <script src="<?=base_url();?>assets/js/jquery.mask.js"></script>
     <script src="<?=base_url();?>assets/js/sweetalert.js"></script>
     <script src="<?=base_url();?>assets/script/functionGlobal.js"></script>
+
+    <!-- HighChart -->
+    <script src="<?=base_url()?>assets/js/highcharts.js"></script>
+    <script src="<?=base_url()?>assets/js/highcharts-more.js"></script>
     
     <title>Documents</title>
 </head>
