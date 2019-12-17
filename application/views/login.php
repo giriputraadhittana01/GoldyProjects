@@ -55,6 +55,28 @@ $(document).ready(function(){
     console.log("bobas");
 });
 
+$('#btn-login').on('click', function(){
+    checkLogin();
+    console.log("ayam");
+});
+
+function checkLogin(){
+    $.ajax({
+        url: '<?= base_url()?>/Login/login_check',
+        data: $('#login_form').serialize(),
+        type: 'POST',
+        success: function(data){
+            if(data){
+                customAlert('success','Success','Wellcome!');
+                window.location.href = "<?= base_url()?>/Home";
+            }else{
+                customAlert('error','Oops...','Wrong Email or Password!!');
+            }
+        }
+    });
+}
+
+
 /*==================================================================
 [ Template ]*/
 $('.input100').each(function(){
