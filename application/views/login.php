@@ -53,6 +53,7 @@ $(document).ready(function(){
 
 $('#btn-login').on('click', function(){
     checkLogin();
+    console.log("ayam");
 });
 
 function checkLogin(){
