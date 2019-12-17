@@ -1,14 +1,15 @@
-<?php 
-    if($this->session->flashdata('msg')!=null&& $this->session->flashdata('msg')=="1"){
-    ?>
+<?php if($this->session->flashdata('msg')!=null&& $this->session->flashdata('msg')=="1"){ ?>
        <script type='text/javascript'>customAlert('success','Success',"Account Created Successfully");</script>
-    <?php } ?>
+<?php }?>
+<?php if($this->session->flashdata('msg')!=null&& $this->session->flashdata('msg')=="2"){ ?>
+       <script type='text/javascript'>customAlert('error','Oops...','Invalid Email Or Password');</script>
+<?php }?>
 <div class="limiter">
 	<div class="container-login100">
 		<div class="wrap-login100" style="margin:100px;">
-			<!-- <form class="login100-form validate-form" method="POST" action="<?=site_url("Login/signin");?>"> -->
+			<form class="login100-form validate-form" method="POST" action="<?=site_url("Login/login_check");?>">
 				<span class="login100-form-title p-b-26">
-					LOGIN   
+					LOGIN 
 				</span>
 				<span class="login100-form-title p-b-48">
 					<img src="<?=base_url();?>/img/logo.png" alt="" width="80px">
@@ -21,13 +22,13 @@
 					<span class="btn-show-pass">
 						<i class="zmdi zmdi-eye"></i>
 					</span>
-					<input class="input100" type="password" name="pass">
+					<input class="input100" type="password" name="pass" onkeyup='checkValidate(event);'>
 					<span class="focus-input100" data-placeholder="Password"></span>
 				</div>
 				<div class="container-login100-form-btn">
-					<div class  ="wrap-login100-form-btn">
+					<div class="wrap-login100-form-btn">
 						<div class="login100-form-bgbtn"></div>
-						<button class="login100-form-btn" onclick="signin()">
+						<button class="login100-form-btn" type='submit'>
 						    Login
 						</button>
 					</div>
@@ -40,7 +41,7 @@
 						Sign Up
 					</a>
 				</div>
-			<!-- </form> -->
+			</form>
 		</div>
 	</div>
 </div>
@@ -52,30 +53,8 @@
 <script type='text/javascript'>
 
 $(document).ready(function(){   
-    console.log("bobas");
+    console.log("Purple");
 });
-
-$('#btn-login').on('click', function(){
-    checkLogin();
-    console.log("ayam");
-});
-
-function checkLogin(){
-    $.ajax({
-        url: '<?= base_url()?>/Login/login_check',
-        data: $('#login_form').serialize(),
-        type: 'POST',
-        success: function(data){
-            if(data){
-                customAlert('success','Success','Wellcome!');
-                window.location.href = "<?= base_url()?>/Home";
-            }else{
-                customAlert('error','Oops...','Wrong Email or Password!!');
-            }
-        }
-    });
-}
-
 
 /*==================================================================
 [ Template ]*/
@@ -142,23 +121,18 @@ $('.btn-show-pass').on('click', function(){
 });
 /*==================================================================*/
 
-function signin()
+function checkValidate(evt)
 {
-    $.ajax({
-	    type : "POST",
-        url : "<?=base_url();?>Login/signin",
-        dataType : "json",
-        data : {
-            email   : $("[name=email]").val(),
-            pass    : $("[name=pass]").val()
-        },
-        success : function(response){
-            if(response==1)
-            {
-                customAlert('error','Oops...','Email Or Password Incorrect');
+    if(evt.which==13)
+    {
+        for(var i=0; i<input.length; i++) 
+        {
+            if(validate(input[i]) == false){
+                showValidate(input[i]);
                 return false;
             }
         }
-	});
+        $(".login100-form-btn").trigger('click');
+    }
 }
 </script>
