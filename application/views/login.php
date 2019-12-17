@@ -65,7 +65,7 @@ function checkLogin(){
                 customAlert('success','Success','Wellcome!');
                 window.location.href = "<?= base_url()?>/Home";
             }else{
-                customAlert('error','Oops...','Wrong Email or Password!');
+                customAlert('error','Oops...','Wrong Email or Password!!');
             }
         }
     });
