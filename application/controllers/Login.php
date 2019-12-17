@@ -9,38 +9,19 @@ class Login extends CI_Controller {
         $this->load->view('login');
     }
 
-    public function signin(){
-
-        $user = $this->input->post();
-
-        $result = $this->goldy_model->getUser($user);
-        $result = json_decode(json_encode($result), true);
-        $result = $result[0];
-        $resp="";
-        if($result){
-            $userdata = array(
-                'logged' => true,
-                'username' => $result['username'],
-                'email' => $result['email'],
-            );
-            $resp=0;
-            $this->session->set_userdata($userdata);
-        }else{
-            $resp=1;
-        }
-        echo json_encode($resp);
-    }
-
     public function login_check(){
         $user = $this->input->post();
 
         $result = $this->goldy_model->getUser($user);
 
+        $resp="";
         if($result){
-            echo TRUE;
+            redirect('home');
         }else{
-            echo FALSE;
+            $msg = "2";
+            $this->session->set_flashdata('msg',$msg);
         }
+        echo json_encode($resp);
     }
     
 

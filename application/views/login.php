@@ -8,7 +8,7 @@
 		<div class="wrap-login100" style="margin:100px;">
 			<!-- <form class="login100-form validate-form" method="POST" action="<?=site_url("Login/signin");?>"> -->
 				<span class="login100-form-title p-b-26">
-					LOGIN 
+					LOGIN   
 				</span>
 				<span class="login100-form-title p-b-48">
 					<img src="<?=base_url();?>/img/logo.png" alt="" width="80px">
@@ -25,7 +25,7 @@
 					<span class="focus-input100" data-placeholder="Password"></span>
 				</div>
 				<div class="container-login100-form-btn">
-					<div class="wrap-login100-form-btn">
+					<div class  ="wrap-login100-form-btn">
 						<div class="login100-form-bgbtn"></div>
 						<button class="login100-form-btn" onclick="signin()">
 						    Login
@@ -123,7 +123,7 @@ $('.btn-show-pass').on('click', function(){
 function signin()
 {
     $.ajax({
-	  type : "POST",
+	    type : "POST",
         url : "<?=base_url();?>Login/signin",
         dataType : "json",
         data : {
