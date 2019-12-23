@@ -59,8 +59,14 @@ body {
     <script src="<?=base_url();?>assets/script/functionGlobal.js"></script>
 
     <!-- HighChart -->
-    <script src="<?=base_url()?>assets/js/highcharts.js"></script>
-    <script src="<?=base_url()?>assets/js/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script> 
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script> 
+    
+    <!-- <script src="<?=base_url();?>assets/js/highcharts.js"></script> -->
+    <!-- <script src="<?=base_url();?>assets/js/highcharts-3d.js"></script>
+    <script src="<?=base_url();?>assets/js/cylinder.js"></script> -->
+    <!-- <script src="<?=base_url();?>assets/js/highcharts-more.js"></script> -->
     
     <title>Documents</title>
 </head>
